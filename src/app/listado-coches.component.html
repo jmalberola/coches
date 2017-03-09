@@ -1,0 +1,45 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Listado de coches-app
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-1">Filtrar por:</div>
+      <div class="col-md-2">
+        <input type="text" [(ngModel)]="filtrar"/>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success" (click)="mostrar_ocultar_Imagen()">
+          {{mostrar ? "Ocultar" : "Mostrar"}} Foto
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Filtrado por</h3>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table"
+            *ngIf="coches && coches.length>0">
+        <thead>
+          <tr>
+            <th [style.width.px]="width_heading">Image</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>km</th>
+            <th>precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let coche of coches">
+            <td><img *ngIf="mostrar" [src]="coche.imagen" [style.width.px]="width"></td>
+            <td>{{ coche.modelo }}</td>
+            <td>{{ coche.anyo }}</td>
+            <td>{{ coche.km }}</td>
+            <td>{{ coche.precio | currency:'EUR':true:'3.2-2' }}</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
